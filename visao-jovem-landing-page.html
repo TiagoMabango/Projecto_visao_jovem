@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Visão Jovem - Inspirando Futuros, Transformando Realidades</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .header-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        /* Monetization Section */
+        .monetization {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .monetization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .monetization-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+        
+        .monetization-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .monetization-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .monetization-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .monetization-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .monetization-card li:before {
+            content: "✓";
+            color: var(--secondary);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Call To Action */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline-container::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Projeto Visão Jovem</h1>
+                <p>Inspirando Futuros, Transformando Realidades</p>
+                <div class="header-buttons">
+                    <a href="#saiba-mais" class="btn btn-primary">Saiba Mais</a>
+                    <a href="#contato" class="btn">Seja um Parceiro</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="saiba-mais">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Missão</h2>
+                <p>Capacitar jovens estudantes para construírem futuros extraordinários através da educação, inovação e desenvolvimento pessoal</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📢</div>
+                    <h3>Palestras Inspiradoras</h3>
+                    <p>Levamos às escolas histórias reais, lições de vida e aprendizados sobre empreendedorismo, tecnologia, carreira e superação.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧭</div>
+                    <h3>Orientação Profissional</h3>
+                    <p>Apresentamos aos jovens as possibilidades além da sala de aula: profissões do futuro, universo das startups, tecnologia e inovação.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Educação para a Vida</h3>
+                    <p>Desenvolvemos habilidades essenciais como liderança, comunicação, autoconhecimento, trabalho em equipe e inteligência emocional.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Cultura de Startups</h3>
+                    <p>Mostramos como ideias podem virar soluções e como jovens podem pensar como inovadores, mesmo antes de entrar no mercado de trabalho.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Apoio a Escolas</h3>
+                    <p>Construímos pontes com professores, diretores e famílias para criar um ambiente que valoriza o crescimento pessoal e coletivo.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Impacto Duradouro</h3>
+                    <p>Nosso objetivo é criar uma geração de jovens visionários, preparados para os desafios do futuro e conscientes do seu potencial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monetization Section -->
+    <section class="monetization">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modelo de Sustentabilidade</h2>
+                <p>Garantimos a sustentabilidade financeira do projeto sem comprometer seu caráter social e inclusivo</p>
+            </div>
+            
+            <div class="monetization-grid">
+                <div class="monetization-card">
+                    <h3>Patrocínio Institucional</h3>
+                    <ul>
+                        <li>Planos de cotas: Bronze, Prata, Ouro e Diamante</li>
+                        <li>Divulgação da marca em materiais e eventos</li>
+                        <li>Participação em relatórios de impacto social</li>
+                        <li>Oportunidades de voluntariado corporativo</li>
+                    </ul>
+                </div>
+                
+                <div class="monetization-card">
+                    <h3>Incentivos Fiscais</h3>
+                    <ul>
+                        <li>Cadastro no FIA (Fundo da Infância e Adolescência)</li>
+                        <li>Direcionamento de Imposto de Renda</li>
+                        <li>Parceria com contadores e áreas de RSC</li>
+                        <li>Benefícios fiscais para apoiadores</li>
+                    </ul>
+                </div>
+                
+                <div class="monetization-card">
+                    <h3>Produtos Educacionais</h3>
+                    <ul>
+                        <li>E-books e cursos online (modelo freemium)</li>
+                        <li>Mentorias e oficinas especializadas</li>
+                        <li>Gratuito para escolas públicas</li>
+                        <li>Planos acessíveis para instituições privadas</li>
+                    </ul>
+                </div>
+                
+                <div class="monetization-card">
+                    <h3>Eventos e Experiências</h3>
+                    <ul>
+                        <li>Hackathons sociais e feiras de startups</li>
+                        <li>Campeonatos de ideias inovadoras</li>
+                        <li>Ingressos para público geral</li>
+                        <li>Pacotes especiais para empresas</li>
+                    </ul>
+                </div>
+                
+                <div class="monetization-card">
+                    <h3>Licenciamento do Programa</h3>
+                    <ul>
+                        <li>"Kit de implementação" para prefeituras</li>
+                        <li>Metodologia completa e materiais didáticos</li>
+                        <li>Formação de facilitadores locais</li>
+                        <li>Suporte técnico e acompanhamento</li>
+                    </ul>
+                </div>
+                
+                <div class="monetization-card">
+                    <h3>Apoio Direto</h3>
+                    <ul>
+                        <li>Assinaturas mensais via plataformas de apoio</li>
+                        <li>Doações por Pix com metas transparentes</li>
+                        <li>Campanha "Adote uma escola"</li>
+                        <li>Recompensas simbólicas para apoiadores</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <div class="section-title">
+                <h2>Plano de Ação</h2>
+                <p>Nossa jornada para os próximos três meses de implementação</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Mês 1</h3>
+                        <p>Criar materiais de apresentação completos, incluindo branding e proposta de valor para parceiros potenciais.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Mês 1-2</h3>
+                        <p>Estabelecer metas claras de arrecadação e priorizar as fontes de financiamento mais viáveis para início rápido.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Mês 2</h3>
+                        <p>Entrar em contato com as primeiras 10 empresas potenciais para apresentação do projeto e proposta de parceria.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Mês 2-3</h3>
+                        <p>Estruturar campanha de apoio direto através de site, redes sociais e plataformas de financiamento coletivo.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Mês 3</h3>
+                        <p>Planejamento e execução de um evento piloto monetizável, como uma oficina ou hackathon juvenil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" id="contato">
+        <div class="container">
+            <h2>Seja parte desta transformação</h2>
+            <p>Junte-se a nós para inspirar e capacitar a próxima geração de jovens líderes, empreendedores e inovadores.</p>
+            <a href="#" class="btn btn-primary">Entre em contato</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Projeto Visão Jovem</h3>
+                    <p>Inspirando futuros, transformando realidades através da educação, empreendedorismo e desenvolvimento pessoal.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">YT</a>
+                        <a href="#" class="social-icon">LI</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Programas</a></li>
+                        <li><a href="#">Depoimentos</a></li>
+                        <li><a href="#">Parceiros</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Para Parceiros</h3>
+                    <ul>
+                        <li><a href="#">Como apoiar</a></li>
+                        <li><a href="#">Planos de patrocínio</a></li>
+                        <li><a href="#">Voluntariado corporativo</a></li>
+                        <li><a href="#">Resultados e impacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>contato@visaojovem.org.br</li>
+                        <li>(00) 1234-5678</li>
+                        <li>São Paulo, SP - Brasil</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Projeto Visão Jovem. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

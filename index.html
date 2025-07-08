@@ -37,8 +37,54 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 100px 0 80px;
+            padding: 20px 0; /* Reduced padding for fixed navbar */
             text-align: center;
+            position: fixed; /* Make header fixed */
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure header is above other content */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .header-content {
+            padding-top: 120px; /* Add padding to content to avoid overlap with fixed header */
         }
         
         .header-content h1 {
@@ -86,6 +132,7 @@
         .features {
             padding: 80px 0;
             background-color: white;
+            margin-top: 80px; /* Adjusted margin for fixed header */
         }
         
         .section-title {
@@ -349,6 +396,41 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide nav links by default on smaller screens */
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--primary); /* Same as header background */
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                padding: 10px 0;
+            }
+
+            .nav-links.active {
+                display: flex; /* Show when active */
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block; /* Show hamburger menu */
+                cursor: pointer;
+                /* Add styles for hamburger icon (e.g., using pseudo-elements) */
+            }
+
+            .menu-toggle .bar {
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                background-color: white;
+                transition: all 0.3s ease-in-out;
+            }
+
             .header-content h1 {
                 font-size: 2.2rem;
             }
@@ -376,6 +458,20 @@
 <body>
     <!-- Header Section -->
     <header>
+        <nav>
+            <a href="#" class="logo">Visão Jovem</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#saiba-mais">Nossa Missão</a></li>
+                <li><a href="#monetizacao">Sustentabilidade</a></li>
+                <li><a href="#plano-acao">Plano de Ação</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
         <div class="container">
             <div class="header-content">
                 <h1>Projeto Visão Jovem</h1>
@@ -437,7 +533,7 @@
     </section>
 
     <!-- Monetization Section -->
-    <section class="monetization">
+    <section class="monetization" id="monetizacao">
         <div class="container">
             <div class="section-title">
                 <h2>Modelo de Sustentabilidade</h2>
@@ -509,7 +605,7 @@
     </section>
 
     <!-- Timeline Section -->
-    <section class="timeline">
+    <section class="timeline" id="plano-acao">
         <div class="container">
             <div class="section-title">
                 <h2>Plano de Ação</h2>
@@ -568,6 +664,12 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
                 <div class="footer-column">
                     <h3>Projeto Visão Jovem</h3>
                     <p>Inspirando futuros, transformando realidades através da educação, empreendedorismo e desenvolvimento pessoal.</p>

@@ -1,0 +1,31 @@
+name: Criar issues automaticamente
+on:
+  workflow_dispatch:  # pode rodar manualmente na aba "Actions"
+  push:
+    paths:
+      - 'issues.json'  # dispara quando o ficheiro é alterado
+
+jobs:
+  create_issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v4
+
+      - name: Ler issues e criar no GitHub
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const issues = JSON.parse(fs.readFileSync('issues.json', 'utf8'));
+
+            for (const issue of issues) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: issue.title,
+                body: issue.body,
+                labels: issue.labels
+              });
+              console.log(`✅ Issue criada: ${issue.title}`);
+            }

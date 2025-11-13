@@ -1,0 +1,112 @@
+:root {
+    --primary: #3498db;
+    --secondary: #2ecc71;
+    --dark: #2c3e50;
+    --light: #f8f9fa; /* Slightly lighter background */
+    --accent: #e67e22; /* Slightly toned down accent */
+    --danger: #e74c3c;
+    --text-color: #555;
+    --heading-color: var(--dark);
+}
+
+/* Modern Design Styles */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+/* Add a subtle background pattern */
+body {
+    background-color: var(--light);
+    color: var(--text-color);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Smoother font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Modernize card styles */
+.feature-card, .monetization-card, .timeline-content {
+    background-color: white;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08); /* Softer, more pronounced shadow */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncier transition */
+    border: 1px solid rgba(0,0,0,0.05); /* Subtle border */
+}
+
+.feature-card:hover, .monetization-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+/* Modern button styles */
+.btn {
+    border-radius: 8px; /* Less rounded, more modern */
+    font-weight: 600; /* Bolder text */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease-in-out;
+    padding: 14px 32px;
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+    border: 2px solid var(--accent);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+/* Header gradient and typography */
+header {
+    background: linear-gradient(135deg, #3498db, #27ae60); /* Slightly adjusted gradient */
+}
+
+.header-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800; /* Bolder heading */
+    color: white;
+}
+
+.header-content p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Section titles */
+.section-title h2 {
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.section-title:after {
+    height: 5px;
+    border-radius: 5px;
+    background: var(--primary);
+}
+
+.timeline-container::after {
+    background-color: #ddd;
+}
+
+.timeline-item::after {
+    border-color: var(--primary);
+}

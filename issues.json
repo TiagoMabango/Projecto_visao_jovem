@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Melhorar a Acessibilidade com aria-label e Ícones SVG",
+    "body": "Atualmente, o site tem algumas lacunas de acessibilidade que podem ser melhoradas:\n\n*   **Links de redes sociais:** Os links de redes sociais no rodapé não têm contexto para os leitores de tela. Adicionar o atributo `aria-label` irá descrever claramente o propósito de cada link (por exemplo, `aria-label=\"O nosso Facebook\"`).\n*   **Ícones de funcionalidades:** Os ícones na seção de funcionalidades são emojis, que podem não ser interpretados de forma consistente por todos os dispositivos e leitores de tela. A substituição dos emojis por ícones SVG com a `role=\"img\"` e um elemento `<title>` proporcionará uma experiência mais robusta e acessível.\n\n**Tarefas:**\n\n*   [ ] Adicionar `aria-label` a todos os links de redes sociais no rodapé.\n*   [ ] Substituir todos os ícones de emoji por SVGs.\n*   [ ] Assegurar que cada SVG inclui um elemento `<title>` para fins de acessibilidade.",
+    "labels": ["accessibility", "frontend"]
+  },
+  {
+    "title": "Refatorar o CSS para Melhorar a Manutenibilidade e o Desempenho",
+    "body": "O CSS do projeto pode ser otimizado para facilitar a manutenção e melhorar o desempenho das animações:\n\n*   **CSS em linha:** Atualmente, existem muitos estilos definidos na tag `<style>` do `index.html`. Mover este CSS para o arquivo `modern-design.css` irá centralizar todos os estilos, tornando o código mais limpo e fácil de gerir.\n*   **Desempenho da animação:** As animações de translação (`translateX`) podem ser otimizadas para tirar partido da aceleração por hardware. A utilização de `transform: translate3d()` irá garantir animações mais suaves, especialmente em dispositivos com menos recursos.\n\n**Tarefas:**\n\n*   [ ] Mover todo o CSS da tag `<style>` do `index.html` para `modern-design.css`.\n*   [ ] Substituir `transform: translateX(-100%)` por `transform: translate3d(-100%, 0, 0)` nas animações.",
+    "labels": ["refactor", "css", "performance"]
+  },
+  {
+    "title": "Otimizar o JavaScript para Melhorar o Desempenho",
+    "body": "O script de animação (`animations.js`) pode ser otimizado para um melhor desempenho:\n\n*   **Intersection Observer:** O Intersection Observer continua a observar os elementos mesmo depois de estes se tornarem visíveis. Ao chamar `observer.unobserve(entry.target)` depois de a classe `.show` ser adicionada, podemos poupar recursos e evitar cálculos desnecessários.\n*   **Reutilização de código:** A função `staggerChildren` pode ser tornada mais genérica para ser reutilizada com diferentes tipos de animações e seletores.\n\n**Tarefas:**\n\n*   [ ] Modificar o Intersection Observer para parar de observar os elementos depois de se tornarem visíveis.\n*   [ ] Refatorar a função `staggerChildren` para maior reutilização.",
+    "labels": ["optimization", "javascript", "performance"]
+  },
+  {
+    "title": "Melhorar a Semântica do HTML",
+    "body": "A utilização de tags HTML5 mais semânticas pode melhorar a estrutura e a acessibilidade do site:\n\n*   **Ícones de funcionalidades:** Os ícones na seção de funcionalidades podem ser envolvidos em tags `<figure>`, que são mais apropriadas para conteúdo visual como ícones.\n*   **Datas da timeline:** As datas na seção da timeline podem ser envolvidas em tags `<time>`, que fornecem um significado semântico às datas.\n\n**Tarefas:**\n\n*   [ ] Usar tags `<figure>` para os ícones na seção de funcionalidades.\n*   [ ] Usar tags `<time>` para as datas na seção da timeline.",
+    "labels": ["semantic-html", "frontend", "refactor"]
+  }
+]

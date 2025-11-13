@@ -8,6 +8,8 @@ on:
 jobs:
   create_issues:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Clonar repositório
         uses: actions/checkout@v4

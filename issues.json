@@ -18,5 +18,10 @@
     "title": "Melhorar a Semântica do HTML",
     "body": "A utilização de tags HTML5 mais semânticas pode melhorar a estrutura e a acessibilidade do site:\n\n*   **Ícones de funcionalidades:** Os ícones na seção de funcionalidades podem ser envolvidos em tags `<figure>`, que são mais apropriadas para conteúdo visual como ícones.\n*   **Datas da timeline:** As datas na seção da timeline podem ser envolvidas em tags `<time>`, que fornecem um significado semântico às datas.\n\n**Tarefas:**\n\n*   [ ] Usar tags `<figure>` para os ícones na seção de funcionalidades.\n*   [ ] Usar tags `<time>` para as datas na seção da timeline.",
     "labels": ["semantic-html", "frontend", "refactor"]
+  },
+  {
+    "title": "Corrigir Links Quebrados e Adicionar Favicon",
+    "body": "Existem vários links no `index.html` que apontam para `#` ou para páginas inexistentes. Além disso, o site não tem um favicon, o que afeta a identidade visual e a experiência do utilizador.\n\n**Tarefas:**\n\n*   [ ] Substituir todos os links `href=\"#\"` por URLs válidas ou desativá-los se não forem funcionais.\n*   [ ] Adicionar um favicon ao site para melhorar a identidade visual no browser.",
+    "labels": ["bug", "frontend", "enhancement"]
   }
 ]
